@@ -12,7 +12,7 @@ router.post('/OrderData', async (req, res) => {
 
     let eId = await Order.findOne({ 'email': req.body.email })
 
-    console.log(eId)
+    // console.log(eId)
 
     if (eId === null) {
 

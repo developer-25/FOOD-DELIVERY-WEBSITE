@@ -33,7 +33,7 @@ export default function Cart() {
         order_date:new Date().toDateString()
       })
     });
-    console.log("JSON RESPONSE:::::", response)
+    // console.log("JSON RESPONSE:::::", response)
     if (response.status === 200) {
       dispatch({ type: "DROP" })
     }
@@ -53,6 +53,7 @@ export default function Cart() {
               <th scope='col' >Quantity</th>
               <th scope='col' >Option</th>
               <th scope='col' >Amount</th>
+              
               <th scope='col' ></th>
             </tr>
           </thead>
@@ -64,6 +65,8 @@ export default function Cart() {
                 <td className='text-white'>{food.qty}</td>
                 <td className='text-white'>{food.size}</td>
                 <td className='text-white'>{food.price}</td>
+                
+                
                 <td ><button type="button" className="btn p-0 text-white bg-success" onClick={() => { dispatch({ type: "REMOVE", index: index }) }}>
                   
                       Delete

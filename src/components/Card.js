@@ -54,7 +54,7 @@ useEffect(()=>{
                         <h5 className="card-title">{props.foodItem.name}</h5>
                         
                         <div className='container w-100' >
-                            <select className='m-2 h-100  bg-success rounded'onChange={(e)=>setQty(e.target.value)}>
+                            <select className='m-2 h-100   rounded'onChange={(e)=>setQty(e.target.value)}>
                                 {
                                     Array.from(Array(6), (e, i) => {
                                         return (
@@ -63,7 +63,7 @@ useEffect(()=>{
                                     })
                                 }
                             </select>
-                            <select className='m-2 h-100  bg-success rounded' ref={priceRef} onChange={(e)=>setSize(e.target.value)}>
+                            <select className='m-2 h-100   rounded' ref={priceRef} onChange={(e)=>setSize(e.target.value)}>
                                {priceoptions.map((data)=>{
                                      return <option key={data} value={data}>{data}</option>
                                })}
