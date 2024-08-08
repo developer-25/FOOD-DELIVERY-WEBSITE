@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
 
-
+const BASE_URL=process.env.BASE_URL;
 export default function Signup() {
   const [credentials, setcredentials] = useState({
     name: "",
@@ -13,7 +13,7 @@ export default function Signup() {
   const handlesubmit = async (e) => {
     e.preventDefault();
     console.log(JSON.stringify({ name:credentials.name,email:credentials.email,password:credentials.password,location:credentials.geolocation}))
-    const response = await fetch(`${process.env.BASE_URL}/api/CreateUser`, {
+    const response = await fetch(`${BASE_URL}/api/CreateUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

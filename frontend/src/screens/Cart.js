@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useCart } from '../components/ContextReducer';
 import { useDispatchCart } from '../components/ContextReducer';
+const BASE_URL=process.env.BASE_URL;
 export default function Cart() {
   let  data = useCart();
   let  dispatch = useDispatchCart();
@@ -20,7 +21,7 @@ export default function Cart() {
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
     // console.log(data,localStorage.getItem("userEmail"),new Date())
-    let response = await fetch("https://food-delivry-backend.onrender.com/api/OrderData", {
+    let response = await fetch(`${BASE_URL}/api/OrderData`, {
       // credentials: 'include',
       // Origin:"http://localhost:3000/login",
       method: 'POST',
