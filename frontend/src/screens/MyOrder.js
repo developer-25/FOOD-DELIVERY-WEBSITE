@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-const BASE_URL=process.env.BASE_URL;
+// const BASE_URL=process.env.BASE_URL;
 export default function MyOrder() {
   
     const [orderData, setorderData] = useState({})
 
     const fetchMyOrder = async () => {
         console.log(localStorage.getItem('userEmail'))
-        await fetch(`${BASE_URL}/api/myOrderData`, {
+        await fetch("http://localhost:5000/api/foodData", {
             // credentials: 'include',
             // Origin:"http://localhost:3000/login",
             method: 'POST',
