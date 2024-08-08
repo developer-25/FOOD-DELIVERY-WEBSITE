@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link,useNavigate } from "react-router-dom";
 
+
 export default function Login() {
   const [credentials, setcredentials] = useState({
 
@@ -12,7 +13,7 @@ export default function Login() {
   const handlesubmit = async (e) => {
     e.preventDefault();
     console.log(JSON.stringify({ email: credentials.email, password: credentials.password }))
-    const response = await fetch("https://food-delivry-backend.onrender.com/api/loginuser", {
+    const response = await fetch(`${process.env.BASE_URL}/api/loginuser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
