@@ -4,7 +4,7 @@ const User = require('../models/User')
 const { body , validationResult}=require('express-validator');
 const jwt=require("jsonwebtoken")
 const bcrypt=require("bcryptjs");
-const jwtSecret=process.env.SECRET||"MynameisEndtoEmdYouTubeChannel$#"
+const jwtSecret="MynameisEndtoEmdYouTubeChannel$#"
 router.post("/CreateUser", [
     body('email').isEmail(),
     body('name').isLength({ min: 5 }),
