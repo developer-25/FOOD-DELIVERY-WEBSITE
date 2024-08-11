@@ -13,8 +13,8 @@ export default function Signup() {
   const handlesubmit = async (e) => {
     e.preventDefault();
     console.log(JSON.stringify({ name:credentials.name,email:credentials.email,password:credentials.password,location:credentials.geolocation}))
-    const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}`, {
-      // /api/foodData
+    const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/foodData`, {
+      
       method: "POST",
       headers: {
         "Content-Type": "application/json",
