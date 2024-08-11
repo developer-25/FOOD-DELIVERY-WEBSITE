@@ -3,6 +3,15 @@ const express = require('express')
 require('dotenv').config()
 const app = express()
 
+const cors = require('cors');
+
+const allowedOrigins = ['https://66b84d46a3dcf102a6b48585--goeatfood.netlify.app'];
+
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true, // if you're using cookies
+}));
 
 
 const PORT = process.env.PORT|| 5000;
