@@ -5,7 +5,7 @@ const app = express()
 
 const cors = require('cors');
 
-const allowedOrigins = ['https://66b84d46a3dcf102a6b48585--goeatfood.netlify.app'];
+const allowedOrigins = process.env.ALLOWED_ORIGIN || "http://localhost:3000";
 
 app.use(cors({
   origin: allowedOrigins,
