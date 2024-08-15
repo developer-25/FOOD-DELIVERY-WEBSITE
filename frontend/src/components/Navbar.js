@@ -12,7 +12,7 @@ export default function Navbar() {
   let data = useCart();
   const handleLogout=()=>{
      localStorage.removeItem("authToken");
-     navigate("/")
+     navigate("/");
   }
   return (
     <div>
