@@ -21,7 +21,7 @@ export default function Cart() {
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
     // console.log(data,localStorage.getItem("userEmail"),new Date())
-    let response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/foodData`, {
+    let response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/OrderData`, {
       // credentials: 'include',
       // Origin:"http://localhost:3000/login",
       method: 'POST',
