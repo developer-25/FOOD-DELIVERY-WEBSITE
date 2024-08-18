@@ -134,7 +134,7 @@ const styles = {
     fontFamily: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif',
   },
   container: {
-    // backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
     borderRadius: '15px',
     padding: '40px',
     maxWidth: '400px',
