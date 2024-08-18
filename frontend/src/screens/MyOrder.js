@@ -1,101 +1,122 @@
-import React, { useEffect, useState } from 'react'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
-// const BASE_URL=process.env.BASE_URL;
+import React, { useEffect, useState } from 'react';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
+
 export default function MyOrder() {
-  
-    const [orderData, setorderData] = useState({})
+    const [orderData, setOrderData] = useState({});
 
     const fetchMyOrder = async () => {
-        console.log(localStorage.getItem('userEmail'))
+        console.log(localStorage.getItem('userEmail'));
         await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/myOrderData`, {
-            // credentials: 'include',
-            // Origin:"http://localhost:3000/login",
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body:JSON.stringify({
-                email:localStorage.getItem('userEmail')
+            body: JSON.stringify({
+                email: localStorage.getItem('userEmail')
             })
         }).then(async (res) => {
-            let response = await res.json()
-            await setorderData(response)
-        })
-
-
-
-        // await res.map((data)=>{
-        //    console.log(data)
-        // })
-
-
-    }
+            let response = await res.json();
+            setOrderData(response);
+        });
+    };
 
     useEffect(() => {
-        fetchMyOrder()
-    }, [])
+        fetchMyOrder();
+    }, []);
 
     return (
         <div>
-            <div>
-                <Navbar />
-            </div>
+            <Navbar />
 
-            <div className='container'>
-                <div className='row'>
-
-                    {orderData !== {} ? Array(orderData).map(data => {
-                        return (
-                            data.orderData ?
-                                data.orderData.order_data.slice(0).reverse().map((item) => {
-                                    return (
-                                        item.map((arrayData) => {
-                                            return (
-                                                <div  >
-                                                    {arrayData.Order_date ? <div className='m-auto mt-5'>
-                                                       
-                                                        {data = arrayData.Order_date}
-                                                        <hr />
-                                                    </div> :
-
-                                                        <div className='col-12 col-md-6 col-lg-3' >
-                                                            <div className="card mt-3" style={{ width: "16rem", maxHeight: "360px" }}>
-                                                                {/* <img src={arrayData.img} className="card-img-top" alt="..." style={{ height: "120px", objectFit: "fill" }} /> */}
-                                                                <div className="card-body">
-                                                                    <h5 className="card-title">{arrayData.name}</h5>
-                                                                    <div className='container w-100 p-0' style={{ height: "38px" }}>
-                                                                        <span className='m-1'>{arrayData.qty}</span>
-                                                                        <span className='m-1'>{arrayData.size}</span>
-                                                                        <span className="m-1">{data}</span>
-                                                                        <div className='  ms-2 h-100 w-20 fs-5' >
-                                                                            ₹{arrayData.price}/-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-
-
-
-                                                    }
-
+            <div style={styles.container}>
+                <div className="row">
+                    {orderData && Array(orderData).map(data => (
+                        data.orderData ? 
+                            data.orderData.order_data.slice(0).reverse().map((item) => (
+                                item.map((arrayData) => (
+                                    <div className="col-12 col-md-6 col-lg-4" style={styles.orderCard} key={arrayData.id}>
+                                        {arrayData.Order_date ? (
+                                            <div style={styles.orderDate}>
+                                                {data = arrayData.Order_date}
+                                                <hr />
+                                            </div>
+                                        ) : (
+                                            <div style={styles.card}>
+                                                <div style={styles.cardBody}>
+                                                    <h5 style={styles.cardTitle}>{arrayData.name}</h5>
+                                                    <div style={styles.orderDetails}>
+                                                        <span style={styles.badge}>{arrayData.qty}</span>
+                                                        <span style={styles.badge}>{arrayData.size}</span>
+                                                        <span style={{ ...styles.badge, ...styles.dateBadge }}>{data}</span>
+                                                    </div>
+                                                    <div style={styles.price}>
+                                                        ₹{arrayData.price}/-
+                                                    </div>
                                                 </div>
-                                            )
-                                        })
-
-                                    )
-                                }) : ""
-                        )
-                    }) : ""}
+                                            </div>
+                                        )}
+                                    </div>
+                                ))
+                            )) 
+                        : null
+                    ))}
                 </div>
-
-
             </div>
 
             <Footer />
         </div>
-    )
+    );
 }
-// {"orderData":{"_id":"63024fd2be92d0469bd9e31a","email":"mohanDas@gmail.com","order_data":[[[{"id":"62ff20fbaed6a15f800125e9","name":"Chicken Fried Rice","qty":"4","size":"half","price":520},{"id":"62ff20fbaed6a15f800125ea","name":"Veg Fried Rice","qty":"4","size":"half","price":440}],"2022-08-21T15:31:30.239Z"],[[{"id":"62ff20fbaed6a15f800125f4","name":"Mix Veg Pizza","qty":"4","size":"medium","price":800},{"id":"62ff20fbaed6a15f800125f3","name":"Chicken Doub;e Cheeze Pizza","qty":"4","size":"regular","price":480}],"2022-08-21T15:32:38.861Z"]],"__v":0}}
+
+const styles = {
+    container: {
+        padding: '2rem 0',
+    },
+    orderCard: {
+        marginBottom: '2rem',
+    },
+    card: {
+        borderRadius: '12px',
+        overflow: 'hidden',
+        transition: 'transform 0.3s, boxShadow 0.3s',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    },
+    cardBody: {
+        padding: '1.5rem',
+    },
+    cardTitle: {
+        fontSize: '1.25rem',
+        fontWeight: '600',
+        color: '#007bff',
+    },
+    orderDetails: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: '1rem',
+    },
+    badge: {
+        backgroundColor: '#6c757d',
+        color: '#fff',
+        borderRadius: '0.25rem',
+        padding: '0.25rem 0.5rem',
+        margin: '0.5rem 0.25rem',
+    },
+    dateBadge: {
+        backgroundColor: '#17a2b8',
+    },
+    price: {
+        marginTop: '1rem',
+        fontSize: '1.25rem',
+        fontWeight: '700',
+        color: '#28a745',
+    },
+    orderDate: {
+        fontSize: '1rem',
+        fontWeight: '600',
+        color: '#333',
+        textAlign: 'center',
+        margin: '1rem 0',
+    },
+};
