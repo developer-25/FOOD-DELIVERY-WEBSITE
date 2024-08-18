@@ -91,7 +91,7 @@ export default function Login() {
 
 const styles = {
   background: {
-    backgroundImage: 'linear-gradient(to right, rgba(255, 200, 150, 0.7), rgba(255, 100, 100, 0.7)), url(https://images.unsplash.com/photo-1498579809087-ef1e558fd1a4)', // Replace with a high-quality food-related image URL
+    backgroundImage: 'linear-gradient(to right, rgba(255, 200, 150, 0.7), rgba(255, 100, 100, 0.7)), url(https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)', // Replace with a high-quality food-related image URL
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     height: '100vh',
