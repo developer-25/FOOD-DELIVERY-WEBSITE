@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function Login() {
-  const [credentials, setcredentials] = useState({
+  const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
 
   let navigate = useNavigate();
 
-  const handlesubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(JSON.stringify({ email: credentials.email, password: credentials.password }));
     const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/loginuser`, {
@@ -37,17 +37,17 @@ export default function Login() {
   };
 
   const onChange = (event) => {
-    setcredentials({ ...credentials, [event.target.name]: event.target.value });
+    setCredentials({ ...credentials, [event.target.name]: event.target.value });
   };
 
   return (
     <div style={styles.background}>
       <div className="container" style={styles.container}>
-        <form onSubmit={handlesubmit} style={styles.form}>
+        <form onSubmit={handleSubmit} style={styles.form}>
           <h2 style={styles.title}>Welcome Back!</h2>
           <div className="mb-3" style={styles.formGroup}>
             <label htmlFor="exampleInputEmail1" className="form-label" style={styles.label}>
-              Email address
+              Email Address
             </label>
             <input
               type="email"
@@ -78,10 +78,10 @@ export default function Login() {
             />
           </div>
           <button type="submit" className="btn btn-success" style={styles.submitButton}>
-            Submit
+            Log In
           </button>
           <Link to="/CreateUser" className="btn btn-danger" style={styles.newUserButton}>
-            I'm a new user
+            New User? Sign Up
           </Link>
         </form>
       </div>
@@ -91,65 +91,90 @@ export default function Login() {
 
 const styles = {
   background: {
-    backgroundImage: 'url(https://example.com/food-background.jpg)', // Replace with your image URL
+    backgroundImage: 'linear-gradient(to right, rgba(255, 200, 150, 0.7), rgba(255, 100, 100, 0.7)), url(https://images.unsplash.com/photo-1498579809087-ef1e558fd1a4)', // Replace with a high-quality food-related image URL
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     height: '100vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    fontFamily: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif',
   },
   container: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
     borderRadius: '15px',
-    padding: '30px',
+    padding: '40px',
     maxWidth: '400px',
     width: '100%',
-    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.1)',
+    textAlign: 'center',
   },
   form: {
     display: 'flex',
     flexDirection: 'column',
   },
   title: {
-    textAlign: 'center',
-    marginBottom: '20px',
+    fontSize: '24px',
+    marginBottom: '30px',
     color: '#333',
   },
   formGroup: {
-    marginBottom: '15px',
+    marginBottom: '20px',
+    textAlign: 'left',
   },
   label: {
-    marginBottom: '5px',
+    fontSize: '14px',
     color: '#555',
   },
   input: {
-    padding: '10px',
+    padding: '12px',
     borderRadius: '5px',
     border: '1px solid #ccc',
+    fontSize: '16px',
   },
   formText: {
     fontSize: '12px',
     color: '#888',
+    marginTop: '5px',
   },
   submitButton: {
-    marginTop: '20px',
-    padding: '10px 20px',
+    marginTop: '25px',
+    padding: '12px 20px',
     backgroundColor: '#28a745',
     borderColor: '#28a745',
     color: '#fff',
-    borderRadius: '5px',
+    borderRadius: '25px',
     cursor: 'pointer',
+    fontSize: '16px',
+    transition: 'background-color 0.3s ease',
   },
   newUserButton: {
     marginTop: '15px',
-    padding: '10px 20px',
+    padding: '12px 20px',
     backgroundColor: '#dc3545',
     borderColor: '#dc3545',
     color: '#fff',
-    borderRadius: '5px',
+    borderRadius: '25px',
     textAlign: 'center',
     textDecoration: 'none',
     cursor: 'pointer',
+    fontSize: '16px',
+    transition: 'background-color 0.3s ease',
   },
 };
+
+// Add hover effects to buttons
+const buttonHoverStyles = `
+  .btn-success:hover {
+    background-color: #218838 !important;
+  }
+  .btn-danger:hover {
+    background-color: #c82333 !important;
+  }
+`;
+
+// Inject hover styles into the document head
+const styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = buttonHoverStyles;
+document.head.appendChild(styleSheet);
