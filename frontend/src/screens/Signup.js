@@ -124,12 +124,13 @@ export default function Signup() {
 
 const styles = {
   background: {
-    backgroundImage: 'linear-gradient(to right, rgba(255, 200, 150, 0.7), rgba(255, 100, 100, 0.7)), url(https://img.freepik.com/free-photo/delicious-burger-with-fresh-ingredients_23-2150857908.jpg?t=st=1723983932~exp=1723987532~hmac=03e5d384093c1d3a8f2d6434924627c2a8867aa1c8bb8bd0b463875b4db24437&w=360)', // Replace with a high-quality food-related image URL
+    backgroundImage: 'linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), url(https://img.freepik.com/free-photo/delicious-burger-with-fresh-ingredients_23-2150857908.jpg?t=st=1723983932~exp=1723987532~hmac=03e5d384093c1d3a8f2d6434924627c2a8867aa1c8bb8bd0b463875b4db24437&w=360)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     height: '100vh',
     display: 'flex',
     justifyContent: 'center',
+    backgroundRepeat: 'no-repeat',
     alignItems: 'center',
     fontFamily: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif',
   },
