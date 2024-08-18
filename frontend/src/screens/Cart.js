@@ -57,7 +57,7 @@ export default function Cart() {
                 <td>{food.qty}</td>
                 <td>{food.size}</td>
                 <td>{food.price}</td>
-                <td>
+                
                   <button 
                     type="button" 
                     className="delete-button" 
@@ -70,7 +70,7 @@ export default function Cart() {
           </tbody>
         </table>
         <div className="total-price">
-          <h1>Total Price: {totalPrice}/-</h1>
+          Total Price: {totalPrice}/-
         </div>
         <div className="checkout-button-container">
           <button className='checkout-button' onClick={handleCheckOut}>
