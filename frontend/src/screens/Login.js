@@ -97,6 +97,7 @@ const styles = {
     backgroundPosition: 'center',
     height: '100vh',
     display: 'flex',
+    backgroundRepeat: 'no-repeat',
     justifyContent: 'center',
     alignItems: 'center',
     fontFamily: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif',
