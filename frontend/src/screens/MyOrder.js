@@ -1,155 +1,101 @@
-import React, { useEffect, useState } from 'react';
-import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
-
+import React, { useEffect, useState } from 'react'
+import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
+// const BASE_URL=process.env.BASE_URL;
 export default function MyOrder() {
-    const [orderData, setOrderData] = useState({});
+  
+    const [orderData, setorderData] = useState({})
 
     const fetchMyOrder = async () => {
-        console.log(localStorage.getItem('userEmail'));
-        await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/myOrderData`, {
+        console.log(localStorage.getItem('userEmail'))
+        await fetch(${process.env.REACT_APP_API_BASE_URL}/api/myOrderData, {
+            // credentials: 'include',
+            // Origin:"http://localhost:3000/login",
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                email: localStorage.getItem('userEmail')
+            body:JSON.stringify({
+                email:localStorage.getItem('userEmail')
             })
         }).then(async (res) => {
-            let response = await res.json();
-            setOrderData(response);
-        });
-    };
+            let response = await res.json()
+            await setorderData(response)
+        })
+
+
+
+        // await res.map((data)=>{
+        //    console.log(data)
+        // })
+
+
+    }
 
     useEffect(() => {
-        fetchMyOrder();
-    }, []);
+        fetchMyOrder()
+    }, [])
 
     return (
-        <div style={styles.page}>
-            <Navbar />
+        <div>
+            <div>
+                <Navbar />
+            </div>
 
-            <div style={styles.container}>
-                <h2 style={styles.header}>My Orders</h2>
-                <div className="row">
-                    {orderData && Array(orderData).map(data => (
-                        data.orderData ?
-                            data.orderData.order_data.slice(0).reverse().map((item) => (
-                                item.map((arrayData) => (
-                                    <div className="col-12 col-md-6 col-lg-4" style={styles.orderCard} key={arrayData.id}>
-                                        {arrayData.Order_date ? (
-                                            <div style={styles.orderDate}>
-                                                {new Date(arrayData.Order_date).toLocaleDateString()}
-                                            </div>
-                                        ) : (
-                                            <div style={styles.card}>
-                                                <div style={styles.cardImage}></div>
-                                                <div style={styles.cardBody}>
-                                                    <h5 style={styles.cardTitle}>{arrayData.name}</h5>
-                                                    <div style={styles.orderDetails}>
-                                                        <span style={styles.badge}>{arrayData.qty} pcs</span>
-                                                        <span style={styles.badge}>{arrayData.size}</span>
-                                                        <span style={{ ...styles.badge, ...styles.dateBadge }}>{new Date(data).toLocaleDateString()}</span>
-                                                    </div>
-                                                    <div style={styles.price}>
-                                                        ₹{arrayData.price}/-
-                                                    </div>
+            <div className='container'>
+                <div className='row'>
+
+                    {orderData !== {} ? Array(orderData).map(data => {
+                        return (
+                            data.orderData ?
+                                data.orderData.order_data.slice(0).reverse().map((item) => {
+                                    return (
+                                        item.map((arrayData) => {
+                                            return (
+                                                <div  >
+                                                    {arrayData.Order_date ? <div className='m-auto mt-5'>
+                                                       
+                                                        {data = arrayData.Order_date}
+                                                        <hr />
+                                                    </div> :
+
+                                                        <div className='col-12 col-md-6 col-lg-3' >
+                                                            <div className="card mt-3" style={{ width: "16rem", maxHeight: "360px" }}>
+                                                                {/* <img src={arrayData.img} className="card-img-top" alt="..." style={{ height: "120px", objectFit: "fill" }} /> */}
+                                                                <div className="card-body">
+                                                                    <h5 className="card-title">{arrayData.name}</h5>
+                                                                    <div className='container w-100 p-0' style={{ height: "38px" }}>
+                                                                        <span className='m-1'>{arrayData.qty}</span>
+                                                                        <span className='m-1'>{arrayData.size}</span>
+                                                                        <span className="m-1">{data}</span>
+                                                                        <div className='  ms-2 h-100 w-20 fs-5' >
+                                                                            ₹{arrayData.price}/-
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+
+
+                                                    }
+
                                                 </div>
-                                            </div>
-                                        )}
-                                    </div>
-                                ))
-                            ))
-                        : null
-                    ))}
+                                            )
+                                        })
+
+                                    )
+                                }) : ""
+                        )
+                    }) : ""}
                 </div>
+
+
             </div>
 
             <Footer />
         </div>
-    );
+    )
 }
-
-const styles = {
-    page: {
-        backgroundColor: '#f3f4f6',
-        minHeight: '100vh',
-        fontFamily: `'Poppins', sans-serif`,
-    },
-    container: {
-        padding: '2rem 1rem',
-        maxWidth: '1200px',
-        margin: 'auto',
-    },
-    header: {
-        fontSize: '2rem',
-        fontWeight: '700',
-        color: '#ff6347',
-        textAlign: 'center',
-        marginBottom: '2rem',
-        textTransform: 'uppercase',
-    },
-    orderCard: {
-        marginBottom: '2rem',
-    },
-    card: {
-        borderRadius: '20px',
-        overflow: 'hidden',
-        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-        backgroundColor: '#ffffff',
-        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
-        cursor: 'pointer',
-        transform: 'scale(1)',
-    },
-    cardImage: {
-        height: '150px',
-        backgroundImage: 'url("https://via.placeholder.com/300")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-    },
-    cardBody: {
-        padding: '1.5rem',
-        position: 'relative',
-        background: 'linear-gradient(145deg, #ff6347, #ff4500)',
-        color: '#ffffff',
-    },
-    cardTitle: {
-        fontSize: '1.4rem',
-        fontWeight: '700',
-        marginBottom: '1rem',
-    },
-    orderDetails: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginTop: '1rem',
-        flexWrap: 'wrap',
-    },
-    badge: {
-        backgroundColor: '#ff7f50',
-        color: '#fff',
-        borderRadius: '12px',
-        padding: '0.5rem 1rem',
-        margin: '0.25rem 0',
-        fontSize: '0.85rem',
-        fontWeight: '600',
-    },
-    dateBadge: {
-        backgroundColor: '#ff4500',
-    },
-    price: {
-        marginTop: '1rem',
-        fontSize: '1.5rem',
-        fontWeight: '700',
-        color: '#fff',
-        textAlign: 'right',
-    },
-    orderDate: {
-        fontSize: '1rem',
-        fontWeight: '600',
-        color: '#ff6347',
-        textAlign: 'center',
-        margin: '1rem 0',
-        textTransform: 'uppercase',
-    },
-};
+// {"orderData":{"_id":"63024fd2be92d0469bd9e31a","email":"mohanDas@gmail.com","order_data":[[[{"id":"62ff20fbaed6a15f800125e9","name":"Chicken Fried Rice","qty":"4","size":"half","price":520},{"id":"62ff20fbaed6a15f800125ea","name":"Veg Fried Rice","qty":"4","size":"half","price":440}],"2022-08-21T15:31:30.239Z"],[[{"id":"62ff20fbaed6a15f800125f4","name":"Mix Veg Pizza","qty":"4","size":"medium","price":800},{"id":"62ff20fbaed6a15f800125f3","name":"Chicken Doub;e Cheeze Pizza","qty":"4","size":"regular","price":480}],"2022-08-21T15:32:38.861Z"]],"__v":0}}
