@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
-import './Login.css';  // Import the CSS file
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [credentials, setcredentials] = useState({
@@ -42,12 +41,12 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-form-container">
-        <form onSubmit={handlesubmit} className="login-form">
-          <h2 className="login-title">Login</h2>
-          <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">
+    <div style={styles.background}>
+      <div className="container" style={styles.container}>
+        <form onSubmit={handlesubmit} style={styles.form}>
+          <h2 style={styles.title}>Welcome Back!</h2>
+          <div className="mb-3" style={styles.formGroup}>
+            <label htmlFor="exampleInputEmail1" className="form-label" style={styles.label}>
               Email address
             </label>
             <input
@@ -58,13 +57,14 @@ export default function Login() {
               onChange={onChange}
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
+              style={styles.input}
             />
-            <div id="emailHelp" className="form-text">
+            <div id="emailHelp" className="form-text" style={styles.formText}>
               We'll never share your email with anyone else.
             </div>
           </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">
+          <div className="mb-3" style={styles.formGroup}>
+            <label htmlFor="exampleInputPassword1" className="form-label" style={styles.label}>
               Password
             </label>
             <input
@@ -74,12 +74,13 @@ export default function Login() {
               value={credentials.password}
               onChange={onChange}
               id="exampleInputPassword1"
+              style={styles.input}
             />
           </div>
-          <button type="submit" className="m-3 btn btn-success">
+          <button type="submit" className="btn btn-success" style={styles.submitButton}>
             Submit
           </button>
-          <Link to="/CreateUser" className="m-3 btn btn-danger">
+          <Link to="/CreateUser" className="btn btn-danger" style={styles.newUserButton}>
             I'm a new user
           </Link>
         </form>
@@ -87,3 +88,68 @@ export default function Login() {
     </div>
   );
 }
+
+const styles = {
+  background: {
+    backgroundImage: 'url(https://example.com/food-background.jpg)', // Replace with your image URL
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    height: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  container: {
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: '15px',
+    padding: '30px',
+    maxWidth: '400px',
+    width: '100%',
+    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  title: {
+    textAlign: 'center',
+    marginBottom: '20px',
+    color: '#333',
+  },
+  formGroup: {
+    marginBottom: '15px',
+  },
+  label: {
+    marginBottom: '5px',
+    color: '#555',
+  },
+  input: {
+    padding: '10px',
+    borderRadius: '5px',
+    border: '1px solid #ccc',
+  },
+  formText: {
+    fontSize: '12px',
+    color: '#888',
+  },
+  submitButton: {
+    marginTop: '20px',
+    padding: '10px 20px',
+    backgroundColor: '#28a745',
+    borderColor: '#28a745',
+    color: '#fff',
+    borderRadius: '5px',
+    cursor: 'pointer',
+  },
+  newUserButton: {
+    marginTop: '15px',
+    padding: '10px 20px',
+    backgroundColor: '#dc3545',
+    borderColor: '#dc3545',
+    color: '#fff',
+    borderRadius: '5px',
+    textAlign: 'center',
+    textDecoration: 'none',
+    cursor: 'pointer',
+  },
+};
