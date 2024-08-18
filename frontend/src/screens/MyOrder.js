@@ -30,6 +30,7 @@ export default function MyOrder() {
             <Navbar />
 
             <div style={styles.container}>
+                <h2 style={styles.header}>My Orders</h2>
                 <div className="row">
                     {orderData && Array(orderData).map(data => (
                         data.orderData ?
@@ -39,10 +40,10 @@ export default function MyOrder() {
                                         {arrayData.Order_date ? (
                                             <div style={styles.orderDate}>
                                                 {new Date(arrayData.Order_date).toLocaleDateString()}
-                                                <hr />
                                             </div>
                                         ) : (
                                             <div style={styles.card}>
+                                                <div style={styles.cardImage}></div>
                                                 <div style={styles.cardBody}>
                                                     <h5 style={styles.cardTitle}>{arrayData.name}</h5>
                                                     <div style={styles.orderDetails}>
@@ -71,31 +72,51 @@ export default function MyOrder() {
 
 const styles = {
     page: {
-        backgroundColor: '#f8f9fa',
+        backgroundColor: '#f3f4f6',
         minHeight: '100vh',
+        fontFamily: `'Poppins', sans-serif`,
     },
     container: {
         padding: '2rem 1rem',
         maxWidth: '1200px',
         margin: 'auto',
     },
+    header: {
+        fontSize: '2rem',
+        fontWeight: '700',
+        color: '#ff6347',
+        textAlign: 'center',
+        marginBottom: '2rem',
+        textTransform: 'uppercase',
+    },
     orderCard: {
         marginBottom: '2rem',
     },
     card: {
-        borderRadius: '15px',
+        borderRadius: '20px',
         overflow: 'hidden',
         transition: 'transform 0.3s ease, box-shadow 0.3s ease',
         backgroundColor: '#ffffff',
-        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
+        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
+        cursor: 'pointer',
+        transform: 'scale(1)',
+    },
+    cardImage: {
+        height: '150px',
+        backgroundImage: 'url("https://via.placeholder.com/300")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
     },
     cardBody: {
         padding: '1.5rem',
+        position: 'relative',
+        background: 'linear-gradient(145deg, #ff6347, #ff4500)',
+        color: '#ffffff',
     },
     cardTitle: {
-        fontSize: '1.3rem',
-        fontWeight: '600',
-        color: '#343a40',
+        fontSize: '1.4rem',
+        fontWeight: '700',
+        marginBottom: '1rem',
     },
     orderDetails: {
         display: 'flex',
@@ -105,28 +126,30 @@ const styles = {
         flexWrap: 'wrap',
     },
     badge: {
-        backgroundColor: '#6c757d',
+        backgroundColor: '#ff7f50',
         color: '#fff',
-        borderRadius: '0.25rem',
+        borderRadius: '12px',
         padding: '0.5rem 1rem',
         margin: '0.25rem 0',
-        fontSize: '0.9rem',
+        fontSize: '0.85rem',
+        fontWeight: '600',
     },
     dateBadge: {
-        backgroundColor: '#007bff',
+        backgroundColor: '#ff4500',
     },
     price: {
         marginTop: '1rem',
         fontSize: '1.5rem',
         fontWeight: '700',
-        color: '#28a745',
+        color: '#fff',
         textAlign: 'right',
     },
     orderDate: {
         fontSize: '1rem',
-        fontWeight: '500',
-        color: '#007bff',
+        fontWeight: '600',
+        color: '#ff6347',
         textAlign: 'center',
         margin: '1rem 0',
+        textTransform: 'uppercase',
     },
 };
