@@ -29,21 +29,21 @@ export default function Carousel() {
             <img
               src="https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg?cs=srgb&dl=pexels-saveurssecretes-5560763.jpg&fm=jpg"
               className="d-block w-100 carousel-image"
-              alt="..."
+              alt="Delicious Food 1"
             />
           </div>
           <div className="carousel-item">
             <img
               src="https://t3.ftcdn.net/jpg/06/16/85/60/360_F_616856040_zCvPMQkPFOWsVb3Hxo7mQUYzlzciFCZs.jpg"
               className="d-block w-100 carousel-image"
-              alt="..."
+              alt="Delicious Food 2"
             />
           </div>
           <div className="carousel-item">
             <img
               src="https://t3.ftcdn.net/jpg/05/60/70/82/240_F_560708240_pMZPOuSfvblWGRoaiZFLT4wiFTzQPwQe.jpg"
               className="d-block w-100 carousel-image"
-              alt="..."
+              alt="Delicious Food 3"
             />
           </div>
         </div>
