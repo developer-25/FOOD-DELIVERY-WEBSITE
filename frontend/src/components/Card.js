@@ -134,6 +134,7 @@ const cardStyles = `
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+    gap: 15px;
 }
 
 .form-select {
