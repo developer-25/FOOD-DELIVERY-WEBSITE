@@ -57,7 +57,7 @@ export default function Cart() {
                 <td>{food.qty}</td>
                 <td>{food.size}</td>
                 <td>{food.price}</td>
-                
+                <td>
                   <button 
                     type="button" 
                     className="delete-button" 
