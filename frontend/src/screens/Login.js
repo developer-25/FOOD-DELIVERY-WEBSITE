@@ -1,55 +1,53 @@
-import React, { useState } from 'react'
-import { Link,useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import './Login.css';  // Import the CSS file
 
 export default function Login() {
   const [credentials, setcredentials] = useState({
-
     email: "",
     password: "",
-
   });
-  let navigate=useNavigate()
+
+  let navigate = useNavigate();
+
   const handlesubmit = async (e) => {
     e.preventDefault();
-    console.log(JSON.stringify({ email: credentials.email, password: credentials.password }))
+    console.log(JSON.stringify({ email: credentials.email, password: credentials.password }));
     const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/loginuser`, {
-      
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-
         email: credentials.email,
         password: credentials.password,
-
       }),
     });
     const json = await response.json();
     console.log(json);
-    
+
     if (!json.success) {
       alert("Enter Valid Credentials");
     }
     if (json.success) {
-      localStorage.setItem("userEmail",credentials.email)
-      localStorage.setItem("authToken",json.authToken)
-      console.log(localStorage.getItem("authToken"))
+      localStorage.setItem("userEmail", credentials.email);
+      localStorage.setItem("authToken", json.authToken);
+      console.log(localStorage.getItem("authToken"));
       navigate("/");
     }
-
   };
 
   const onChange = (event) => {
     setcredentials({ ...credentials, [event.target.name]: event.target.value });
   };
-  return (
-    <div>
-      <div className="container">
-        <form onSubmit={handlesubmit}>
 
+  return (
+    <div className="login-container">
+      <div className="login-form-container">
+        <form onSubmit={handlesubmit} className="login-form">
+          <h2 className="login-title">Login</h2>
           <div className="mb-3">
-            <label htmlfor="exampleInputEmail1" className="form-label">
+            <label htmlFor="exampleInputEmail1" className="form-label">
               Email address
             </label>
             <input
@@ -66,7 +64,7 @@ export default function Login() {
             </div>
           </div>
           <div className="mb-3">
-            <label htmlfor="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="form-label">
               Password
             </label>
             <input
@@ -78,10 +76,7 @@ export default function Login() {
               id="exampleInputPassword1"
             />
           </div>
-
-
-
-          <button type="submit" className=" m-3 btn btn-success">
+          <button type="submit" className="m-3 btn btn-success">
             Submit
           </button>
           <Link to="/CreateUser" className="m-3 btn btn-danger">
@@ -90,5 +85,5 @@ export default function Login() {
         </form>
       </div>
     </div>
-  )
+  );
 }
