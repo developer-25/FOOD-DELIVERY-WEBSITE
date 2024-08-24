@@ -22,7 +22,7 @@ export default function Carousel() {
                 onChange={(e) => setSearch(e.target.value)}
               />
               <button
-                className="btn btn-outline-success text-white bg-success search-button"
+                className="btn btn-outline-success text-white bg-success"
                 type="submit"
               >
                 Search
@@ -114,25 +114,24 @@ const carouselStyles = `
 }
 
 .search-bar {
-  max-width: 800px; /* Increased from 600px to 800px */
+  max-width: 800px;
   width: 100%;
   margin-top: 1rem;
 }
 
 .search-input {
   flex: 1;
-  padding: 1rem 1.5rem; /* Increased padding for larger input */
-  border-radius: 50px;
-  border: none;
-  outline: none;
-  font-size: 1.2rem; /* Slightly increased font size */
+  padding: 1rem;
+  border-radius: 0; /* Removes rounded corners */
+  border: 1px solid #ced4da;
+  font-size: 1.2rem;
 }
 
 .search-button {
-  padding: 0.8rem 1.5rem; /* Increased padding for larger button */
-  border-radius: 50px;
-  font-size: 1.2rem; /* Slightly increased font size */
-  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0; /* Matches button with input field */
+  font-size: 1.2rem;
+  border: 1px solid #28a745;
 }
 
 .carousel-control-prev,
@@ -160,12 +159,12 @@ const carouselStyles = `
 
   .search-input {
     font-size: 1rem;
-    padding: 0.8rem 1rem; /* Adjusted padding */
+    padding: 0.8rem;
   }
 
   .search-button {
     font-size: 1rem;
-    padding: 0.7rem 1.2rem; /* Adjusted padding */
+    padding: 0.8rem;
   }
 }
 
@@ -177,12 +176,12 @@ const carouselStyles = `
 
   .search-input {
     font-size: 0.9rem;
-    padding: 0.6rem 0.9rem; /* Adjusted padding */
+    padding: 0.6rem;
   }
 
   .search-button {
     font-size: 0.9rem;
-    padding: 0.5rem 1rem; /* Adjusted padding */
+    padding: 0.6rem;
   }
 }
 `;
