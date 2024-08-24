@@ -7,6 +7,7 @@ import { useCart } from './ContextReducer';
 
 export default function Navbar() {
   const [cartView, setCartView] = useState(false);
+  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const navigate = useNavigate();
   let data = useCart();
 
@@ -15,16 +16,27 @@ export default function Navbar() {
     navigate("/");
   };
 
+  const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-success">
         <div className="container-fluid">
           <Link className="navbar-brand fs-1 fst-italic" to="/">GoFood</Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <button 
+            className="navbar-toggler" 
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#navbarNav" 
+            aria-controls="navbarNav" 
+            aria-expanded={!isNavCollapsed ? true : false} 
+            aria-label="Toggle navigation"
+            onClick={handleNavCollapse}
+          >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`} id="navbarNav">
+            <ul className="navbar-nav me-auto mb-2">
               <li className="nav-item">
                 <Link className="nav-link active fs-5" aria-current="page" to="/">Home</Link>
               </li>
@@ -34,31 +46,29 @@ export default function Navbar() {
                 </li>
               )}
             </ul>
-            <div className="d-flex">
-              {!localStorage.getItem("authToken") ? (
-                <>
-                  <Link className="btn btn-custom mx-1" to="/login">Login</Link>
-                  <Link className="btn btn-custom mx-1" to="/CreateUser">Signup</Link>
-                </>
-              ) : (
-                <>
-                  <div className="btn btn-custom mx-2 position-relative" onClick={() => setCartView(true)}>
-                    My Cart {" "}
-                    <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle badge-rounded-pill">
-                      {data.length}
-                    </Badge>
-                  </div>
-                  {cartView && (
-                    <Modal onClose={() => setCartView(false)}>
-                      <Cart />
-                    </Modal>
-                  )}
-                  <div className="btn btn-custom mx-2" onClick={handleLogout}>
-                    Logout
-                  </div>
-                </>
-              )}
-            </div>
+            {!localStorage.getItem("authToken") ? (
+              <div className="d-flex">
+                <Link className="btn btn-custom mx-1" to="/login">Login</Link>
+                <Link className="btn btn-custom mx-1" to="/CreateUser">Signup</Link>
+              </div>
+            ) : (
+              <div className="d-flex align-items-center">
+                <div className="btn btn-custom mx-2 position-relative" onClick={() => setCartView(true)}>
+                  My Cart {" "}
+                  <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle badge-rounded-pill">
+                    {data.length}
+                  </Badge>
+                </div>
+                {cartView && (
+                  <Modal onClose={() => setCartView(false)}>
+                    <Cart />
+                  </Modal>
+                )}
+                <div className="btn btn-custom mx-2" onClick={handleLogout}>
+                  Logout
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </nav>
@@ -87,23 +97,6 @@ const navbarButtonStyles = `
 .badge-rounded-pill {
   border-radius: 50%;
   font-size: 0.75rem;
-}
-
-/* Ensure the navbar items align properly on smaller screens */
-@media (max-width: 992px) {
-  .navbar-nav .nav-item {
-    text-align: center;
-    margin: 0.5rem 0;
-  }
-
-  .navbar-nav {
-    width: 100%;
-  }
-
-  .d-flex {
-    justify-content: center;
-    width: 100%;
-  }
 }
 `;
 
