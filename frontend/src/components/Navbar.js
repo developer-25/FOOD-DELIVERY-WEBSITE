@@ -140,4 +140,14 @@ const navbarButtonStyles = `
   }
 
   .btn-custom {
-    padding: 0.
+    padding: 0.25rem 0.5rem; /* Adjust padding for smallest screens */
+    font-size: 0.8rem; /* Smallest font size */
+  }
+}
+`;
+
+// Inject styles into the document head
+const styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = navbarButtonStyles;
+document.head.appendChild(styleSheet);
