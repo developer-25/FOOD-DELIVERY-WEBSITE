@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCart } from '../components/ContextReducer';
 import { useDispatchCart } from '../components/ContextReducer';
 
 export default function Cart() {
+  const [isCartOpen, setIsCartOpen] = useState(true); // State to manage the sliding effect
   let data = useCart();
   let dispatch = useDispatchCart();
 
@@ -37,7 +38,10 @@ export default function Cart() {
 
   return (
     <div className="cart-container">
-      <div className='table-container'>
+      <button className="toggle-cart-button" onClick={() => setIsCartOpen(!isCartOpen)}>
+        {isCartOpen ? "Hide Cart" : "Show Cart"}
+      </button>
+      <div className={`table-container ${isCartOpen ? 'open' : 'closed'}`}>
         <table className='cart-table'>
           <thead className='table-header'>
             <tr>
@@ -90,8 +94,27 @@ const styles = `
     padding: 20px;
     min-height: 100vh;
     color: white;
+    position: relative;
   }
-  
+
+  .toggle-cart-button {
+    background-color: #28a745;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .toggle-cart-button:hover {
+    background-color: #218838;
+  }
+
   .cart-empty-container {
     display: flex;
     justify-content: center;
@@ -105,7 +128,7 @@ const styles = `
     color: white;
     text-align: center;
   }
-  
+
   .table-container {
     background: rgba(0, 0, 0, 0.7);
     padding: 20px;
@@ -113,7 +136,14 @@ const styles = `
     max-width: 800px;
     margin: auto;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    position: relative;
     overflow-x: auto; /* Allow table to scroll horizontally on small screens */
+    transform: translateY(0); /* Default position when open */
+  }
+
+  .table-container.closed {
+    transform: translateY(-100%); /* Slide the container up when closed */
   }
 
   .cart-table {
