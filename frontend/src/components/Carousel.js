@@ -31,7 +31,7 @@ export default function Carousel() {
           </div>
           <div className="carousel-item active">
             <img
-              src="https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg?cs=srgb&dl=pexels-saveurssecretes-5560763.jpg&fm=jpg"
+              src="https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"
               className="d-block w-100 carousel-image"
               alt="..."
             />
