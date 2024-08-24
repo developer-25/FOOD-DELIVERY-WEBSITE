@@ -146,20 +146,25 @@ export default function Home() {
         <h3 className="m-3">{data.CategoryName}</h3>
         <hr />
         {foodItem.length > 0 ? (
-          foodItem
-            .filter(
-              (item) =>
-                item.CategoryName === data.CategoryName &&
-                item.name.toLowerCase().includes(search.toLowerCase())
-            )
-            .map((filterItems) => (
-              <div key={filterItems._id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                <Card
-                  foodItem={filterItems}
-                  options={filterItems.options[0]}
-                />
-              </div>
-            ))
+          <div className="row">
+            {foodItem
+              .filter(
+                (item) =>
+                  item.CategoryName === data.CategoryName &&
+                  item.name.toLowerCase().includes(search.toLowerCase())
+              )
+              .map((filterItems) => (
+                <div
+                  key={filterItems._id}
+                  className="col-12 col-sm-6 col-md-6 col-lg-4 mb-4"
+                >
+                  <Card
+                    foodItem={filterItems}
+                    options={filterItems.options[0]}
+                  />
+                </div>
+              ))}
+          </div>
         ) : (
           <div className="text-center">No Data Found</div>
         )}
