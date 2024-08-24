@@ -75,18 +75,18 @@ export default function Carousel() {
 const carouselStyles = `
 .custom-carousel {
   position: relative;
-  max-height: 600px;
+  max-height: 240px; /* Match the height of the reference image */
   overflow: hidden;
+}
+
+.carousel-inner {
+  height: 100%;
 }
 
 .carousel-image {
   object-fit: cover;
   width: 100%;
-  height: 100%; /* Ensure the image covers the container */
-}
-
-.carousel-inner {
-  height: 100%; /* Set the inner container to full height */
+  height: 100%;
 }
 
 .carousel-caption {
@@ -151,8 +151,8 @@ const carouselStyles = `
     padding: 0.5rem 1rem;
   }
 
-  .carousel-image {
-    height: 50vh; /* Adjust image height for smaller screens */
+  .custom-carousel {
+    max-height: 180px; /* Adjust height for smaller screens */
   }
 }
 
@@ -172,8 +172,8 @@ const carouselStyles = `
     padding: 0.4rem 0.8rem;
   }
 
-  .carousel-image {
-    height: 40vh; /* Further adjust image height for mobile screens */
+  .custom-carousel {
+    max-height: 150px; /* Further adjust height for mobile screens */
   }
 
   .custom-carousel-control {
