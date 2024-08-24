@@ -27,7 +27,7 @@ export default function Carousel() {
               >
                 Search
               </button>
-            </form>
+            </div>
           </div>
           <div className="carousel-item active">
             <img
