@@ -32,8 +32,78 @@ export default function Home() {
         <Navbar />
       </div>
       <div>
-        <Carousel/>
+      <div
+        id="carouselExampleFade"
+        className="carousel slide carousel-fade custom-carousel"
+        data-bs-ride="carousel"
+      >
+        <div className="carousel-inner">
+          <div className="carousel-caption d-flex justify-content-center align-items-center flex-column">
+            <div className="d-flex search-bar">
+              <input
+                className="form-control me-2 search-input"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                value={search}
+                onChange={(e) => {setSearch(e.target.value)}}
+              />
+              <button
+                className="btn search-button"
+                type="submit"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+          <div className="carousel-item active">
+            <img
+              src="https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"
+              className="d-block w-100 carousel-image"
+              alt="..."
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              src="https://t3.ftcdn.net/jpg/06/16/85/60/360_F_616856040_zCvPMQkPFOWsVb3Hxo7mQUYzlzciFCZs.jpg"
+              className="d-block w-100 carousel-image"
+              alt="..."
+            />
+          </div>
+          <div className="carousel-item">
+            <img
+              src="https://t3.ftcdn.net/jpg/05/60/70/82/240_F_560708240_pMZPOuSfvblWGRoaiZFLT4wiFTzQPwQe.jpg"
+              className="d-block w-100 carousel-image"
+              alt="..."
+            />
+          </div>
         </div>
+        <button
+          className="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleFade"
+          data-bs-slide="prev"
+        >
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button
+          className="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleFade"
+          data-bs-slide="next"
+        >
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
       <div className="container">
         {foodCat !== []
           ? foodCat.map((data) => {
