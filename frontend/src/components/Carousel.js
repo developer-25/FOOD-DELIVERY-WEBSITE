@@ -86,7 +86,7 @@ const carouselStyles = `
 .custom-carousel {
   position: relative;
   width: 100%;
-  height: 60vh; /* Adjust this height as needed */
+  height: 80vh; /* Adjust this height as needed */
   overflow: hidden;
 }
 
@@ -143,7 +143,7 @@ const carouselStyles = `
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   filter: invert(100%);
-  opacity: 0.8;
+  opacity: 0;
 }
 
 .carousel-control-prev:hover .carousel-control-prev-icon,
