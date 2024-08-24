@@ -74,17 +74,22 @@ export default function Carousel() {
 
 const carouselStyles = `
 .custom-carousel {
-  position: relative;
-  max-height: 240px; /* Match the height of the reference image */
+  width: 100vw; /* Full viewport width */
+  height: 400px; /* Fixed height for the carousel */
   overflow: hidden;
+  position: relative;
 }
 
 .carousel-inner {
   height: 100%;
 }
 
+.carousel-item {
+  height: 100%;
+}
+
 .carousel-image {
-  object-fit: cover;
+  object-fit: cover; /* Ensures the image covers the container */
   width: 100%;
   height: 100%;
 }
@@ -151,8 +156,8 @@ const carouselStyles = `
     padding: 0.5rem 1rem;
   }
 
-  .custom-carousel {
-    max-height: 180px; /* Adjust height for smaller screens */
+  .carousel-image {
+    height: 50vh; /* Adjust image height for smaller screens */
   }
 }
 
@@ -172,8 +177,8 @@ const carouselStyles = `
     padding: 0.4rem 0.8rem;
   }
 
-  .custom-carousel {
-    max-height: 150px; /* Further adjust height for mobile screens */
+  .carousel-image {
+    height: 40vh; /* Further adjust image height for mobile screens */
   }
 
   .custom-carousel-control {
