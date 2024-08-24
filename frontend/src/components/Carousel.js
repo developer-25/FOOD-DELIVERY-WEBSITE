@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Carousel() {
+  const [search, setSearch] = useState('');
+
   return (
     <div>
       <div
@@ -8,61 +10,69 @@ export default function Carousel() {
         className="carousel slide carousel-fade custom-carousel"
         data-bs-ride="carousel"
       >
-        <div className="carousel-inner" id="carousel">
+        <div className="carousel-inner">
           <div className="carousel-caption d-flex justify-content-center align-items-center flex-column">
-            <form className="d-flex search-bar">
+            <div className="d-flex search-bar">
               <input
-                className="form-control me-2 search-input"
+                className="form-control me-2"
                 type="search"
-                placeholder="Search for delicious food..."
+                placeholder="Search"
                 aria-label="Search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
               />
               <button
-                className="btn btn-outline-success text-white bg-success search-button"
+                className="btn btn-outline-success text-white bg-success"
                 type="submit"
               >
                 Search
               </button>
-            </form>
+            </div>
           </div>
           <div className="carousel-item active">
             <img
               src="https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg?cs=srgb&dl=pexels-saveurssecretes-5560763.jpg&fm=jpg"
               className="d-block w-100 carousel-image"
-              alt="Delicious Food 1"
+              alt="..."
             />
           </div>
           <div className="carousel-item">
             <img
               src="https://t3.ftcdn.net/jpg/06/16/85/60/360_F_616856040_zCvPMQkPFOWsVb3Hxo7mQUYzlzciFCZs.jpg"
               className="d-block w-100 carousel-image"
-              alt="Delicious Food 2"
+              alt="..."
             />
           </div>
           <div className="carousel-item">
             <img
               src="https://t3.ftcdn.net/jpg/05/60/70/82/240_F_560708240_pMZPOuSfvblWGRoaiZFLT4wiFTzQPwQe.jpg"
               className="d-block w-100 carousel-image"
-              alt="Delicious Food 3"
+              alt="..."
             />
           </div>
         </div>
         <button
-          className="carousel-control-prev custom-carousel-control"
+          className="carousel-control-prev"
           type="button"
           data-bs-target="#carouselExampleFade"
           data-bs-slide="prev"
         >
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
           <span className="visually-hidden">Previous</span>
         </button>
         <button
-          className="carousel-control-next custom-carousel-control"
+          className="carousel-control-next"
           type="button"
           data-bs-target="#carouselExampleFade"
           data-bs-slide="next"
         >
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
           <span className="visually-hidden">Next</span>
         </button>
       </div>
@@ -74,10 +84,10 @@ export default function Carousel() {
 
 const carouselStyles = `
 .custom-carousel {
-  width: 100vw; /* Full viewport width */
-  height: 400px; /* Fixed height for the carousel */
-  overflow: hidden;
   position: relative;
+  width: 100%;
+  height: 60vh; /* Adjust this height as needed */
+  overflow: hidden;
 }
 
 .carousel-inner {
@@ -92,6 +102,7 @@ const carouselStyles = `
   object-fit: cover; /* Ensures the image covers the container */
   width: 100%;
   height: 100%;
+  filter: brightness(30%);
 }
 
 .carousel-caption {
@@ -124,18 +135,19 @@ const carouselStyles = `
   border: none;
 }
 
-.custom-carousel-control {
+.carousel-control-prev,
+.carousel-control-next {
   width: 5%;
 }
 
-.custom-carousel-control .carousel-control-prev-icon,
-.custom-carousel-control .carousel-control-next-icon {
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
   filter: invert(100%);
   opacity: 0.8;
 }
 
-.custom-carousel-control:hover .carousel-control-prev-icon,
-.custom-carousel-control:hover .carousel-control-next-icon {
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
   opacity: 1;
 }
 
@@ -155,10 +167,6 @@ const carouselStyles = `
     font-size: 1rem;
     padding: 0.5rem 1rem;
   }
-
-  .carousel-image {
-    height: 50vh; /* Adjust image height for smaller screens */
-  }
 }
 
 @media (max-width: 576px) {
@@ -175,14 +183,6 @@ const carouselStyles = `
   .search-button {
     font-size: 0.9rem;
     padding: 0.4rem 0.8rem;
-  }
-
-  .carousel-image {
-    height: 40vh; /* Further adjust image height for mobile screens */
-  }
-
-  .custom-carousel-control {
-    width: 8%;
   }
 }
 `;
