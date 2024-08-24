@@ -24,7 +24,7 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav me-auto mb-2">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link className="nav-link active fs-5" aria-current="page" to="/">Home</Link>
               </li>
@@ -34,29 +34,31 @@ export default function Navbar() {
                 </li>
               )}
             </ul>
-            {!localStorage.getItem("authToken") ? (
-              <div className="d-flex">
-                <Link className="btn btn-custom mx-1" to="/login">Login</Link>
-                <Link className="btn btn-custom mx-1" to="/CreateUser">Signup</Link>
-              </div>
-            ) : (
-              <div className="d-flex align-items-center">
-                <div className="btn btn-custom mx-2 position-relative" onClick={() => setCartView(true)}>
-                  My Cart {" "}
-                  <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle badge-rounded-pill">
-                    {data.length}
-                  </Badge>
-                </div>
-                {cartView && (
-                  <Modal onClose={() => setCartView(false)}>
-                    <Cart />
-                  </Modal>
-                )}
-                <div className="btn btn-custom mx-2" onClick={handleLogout}>
-                  Logout
-                </div>
-              </div>
-            )}
+            <div className="d-flex">
+              {!localStorage.getItem("authToken") ? (
+                <>
+                  <Link className="btn btn-custom mx-1" to="/login">Login</Link>
+                  <Link className="btn btn-custom mx-1" to="/CreateUser">Signup</Link>
+                </>
+              ) : (
+                <>
+                  <div className="btn btn-custom mx-2 position-relative" onClick={() => setCartView(true)}>
+                    My Cart {" "}
+                    <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle badge-rounded-pill">
+                      {data.length}
+                    </Badge>
+                  </div>
+                  {cartView && (
+                    <Modal onClose={() => setCartView(false)}>
+                      <Cart />
+                    </Modal>
+                  )}
+                  <div className="btn btn-custom mx-2" onClick={handleLogout}>
+                    Logout
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </nav>
@@ -85,6 +87,23 @@ const navbarButtonStyles = `
 .badge-rounded-pill {
   border-radius: 50%;
   font-size: 0.75rem;
+}
+
+/* Ensure the navbar items align properly on smaller screens */
+@media (max-width: 992px) {
+  .navbar-nav .nav-item {
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+
+  .navbar-nav {
+    width: 100%;
+  }
+
+  .d-flex {
+    justify-content: center;
+    width: 100%;
+  }
 }
 `;
 
