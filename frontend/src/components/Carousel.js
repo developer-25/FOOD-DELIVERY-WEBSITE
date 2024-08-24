@@ -141,13 +141,13 @@ const carouselStyles = `
 .carousel-control-prev,
 .carousel-control-next {
   width: 5%;
-  color:white;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   filter: invert(100%);
   opacity: 1;
+  color: white;
 }
 
 .carousel-control-prev:hover .carousel-control-prev-icon,
