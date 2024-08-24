@@ -143,7 +143,7 @@ const carouselStyles = `
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   filter: invert(100%);
-  opacity: 0;
+  opacity: 1;
 }
 
 .carousel-control-prev:hover .carousel-control-prev-icon,
