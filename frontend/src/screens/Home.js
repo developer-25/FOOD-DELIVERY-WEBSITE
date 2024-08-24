@@ -104,7 +104,7 @@ export default function Home() {
         </button>
       </div>
     </div>
-      <div className="container">
+      {/* <div className="container">
         {foodCat !== []
           ? foodCat.map((data) => {
               return (
@@ -138,7 +138,38 @@ export default function Home() {
               );
             })
           : ""}
+      </div> */}
+      <div className="container">
+  {foodCat.length > 0 ? (
+    foodCat.map((data) => (
+      <div key={data._id} className="mb-3">
+        <h3 className="m-3">{data.CategoryName}</h3>
+        <hr />
+        {foodItem.length > 0 ? (
+          foodItem
+            .filter(
+              (item) =>
+                item.CategoryName === data.CategoryName &&
+                item.name.toLowerCase().includes(search.toLowerCase())
+            )
+            .map((filterItems) => (
+              <div key={filterItems._id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <Card
+                  foodItem={filterItems}
+                  options={filterItems.options[0]}
+                />
+              </div>
+            ))
+        ) : (
+          <div className="text-center">No Data Found</div>
+        )}
       </div>
+    ))
+  ) : (
+    <div className="text-center">Loading...</div>
+  )}
+</div>
+
       <div>
         <Footer />
       </div>
