@@ -173,7 +173,7 @@ const carouselStyles = `
   }
 
   .carousel-image {
-    height: 40vh; /* Further adjust image height for mobile screens */
+    height: 10vh; /* Further adjust image height for mobile screens */
   }
 
   .custom-carousel-control {
