@@ -19,7 +19,7 @@ export default function Carousel() {
                 placeholder="Search"
                 aria-label="Search"
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => {setSearch(e.target.value)}}
               />
               <button
                 className="btn search-button"
