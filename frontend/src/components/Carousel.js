@@ -75,7 +75,7 @@ export default function Carousel() {
 const carouselStyles = `
 .custom-carousel {
   width: 100vw; /* Full viewport width */
-  height: 400px; /* Fixed height for the carousel */
+  height: 200px; /* Fixed height for the carousel */
   overflow: hidden;
   position: relative;
 }
