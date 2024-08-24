@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
-import Carousel from "../components/Carousel";
 
 // const BASE_URL=process.env.BASE_URL;
 export default function Home() {
@@ -32,7 +31,7 @@ export default function Home() {
         <Navbar />
       </div>
       <div>
-        {/* <div
+        <div
           id="carouselExampleFade"
           className="carousel slide carousel-fade"
           data-bs-ride="carousel"
@@ -106,8 +105,7 @@ export default function Home() {
             ></span>
             <span className="visually-hidden">Next</span>
           </button>
-        </div> */}
-        <Carousel/>
+        </div>
       </div>
       <div className="container">
         {foodCat !== []
