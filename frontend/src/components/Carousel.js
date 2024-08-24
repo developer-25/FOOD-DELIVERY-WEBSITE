@@ -14,7 +14,7 @@ export default function Carousel() {
           <div className="carousel-caption d-flex justify-content-center align-items-center flex-column">
             <div className="d-flex search-bar">
               <input
-                className="form-control me-2"
+                className="form-control me-2 search-input"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
@@ -22,7 +22,7 @@ export default function Carousel() {
                 onChange={(e) => setSearch(e.target.value)}
               />
               <button
-                className="btn btn-outline-success text-white bg-success"
+                className="btn btn-outline-success text-white bg-success search-button"
                 type="submit"
               >
                 Search
@@ -114,24 +114,24 @@ const carouselStyles = `
 }
 
 .search-bar {
-  max-width: 600px;
+  max-width: 800px; /* Increased from 600px to 800px */
   width: 100%;
   margin-top: 1rem;
 }
 
 .search-input {
   flex: 1;
-  padding: 0.8rem 1rem;
+  padding: 1rem 1.5rem; /* Increased padding for larger input */
   border-radius: 50px;
   border: none;
   outline: none;
-  font-size: 1.1rem;
+  font-size: 1.2rem; /* Slightly increased font size */
 }
 
 .search-button {
-  padding: 0.6rem 1.2rem;
+  padding: 0.8rem 1.5rem; /* Increased padding for larger button */
   border-radius: 50px;
-  font-size: 1.1rem;
+  font-size: 1.2rem; /* Slightly increased font size */
   border: none;
 }
 
@@ -160,12 +160,12 @@ const carouselStyles = `
 
   .search-input {
     font-size: 1rem;
-    padding: 0.6rem 0.8rem;
+    padding: 0.8rem 1rem; /* Adjusted padding */
   }
 
   .search-button {
     font-size: 1rem;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1.2rem; /* Adjusted padding */
   }
 }
 
@@ -177,12 +177,12 @@ const carouselStyles = `
 
   .search-input {
     font-size: 0.9rem;
-    padding: 0.5rem 0.7rem;
+    padding: 0.6rem 0.9rem; /* Adjusted padding */
   }
 
   .search-button {
     font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
+    padding: 0.5rem 1rem; /* Adjusted padding */
   }
 }
 `;
