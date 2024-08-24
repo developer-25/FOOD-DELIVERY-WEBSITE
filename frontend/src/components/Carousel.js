@@ -122,14 +122,14 @@ const carouselStyles = `
 .search-input {
   flex: 1;
   padding: 1rem;
-  border-radius: 0; /* Removes rounded corners */
+  border-radius: 2; /* Removes rounded corners */
   border: 1px solid #ced4da;
   font-size: 1.2rem;
 }
 
 .search-button {
   padding: 0.6rem 1.2rem;
-  border-radius: 0; /* Matches button with input field */
+  border-radius: 2; /* Matches button with input field */
   font-size: 1.2rem;
   border: 1px solid #28a745;
 }
