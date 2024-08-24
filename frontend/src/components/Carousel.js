@@ -141,6 +141,7 @@ const carouselStyles = `
 .carousel-control-prev,
 .carousel-control-next {
   width: 5%;
+  background-color: transparent;
 }
 
 .carousel-control-prev-icon,
