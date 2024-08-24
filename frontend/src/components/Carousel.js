@@ -146,7 +146,7 @@ const carouselStyles = `
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  filter: invert(100%);
+  background-color: white;
   opacity: 1;
   color: white;
 }
