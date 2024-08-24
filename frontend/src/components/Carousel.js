@@ -80,7 +80,8 @@ const carouselStyles = `
 
 .carousel-image {
   object-fit: cover;
-  max-height: 600px;
+  width: 100%;
+  height: 70vh; /* Adjusts the height of images based on viewport height */
   filter: brightness(50%);
 }
 
@@ -88,11 +89,14 @@ const carouselStyles = `
   z-index: 10;
   bottom: 20%;
   text-align: center;
+  font-size: 2rem;
+  padding: 1rem;
 }
 
 .search-bar {
   max-width: 600px;
   width: 100%;
+  margin-top: 1rem;
 }
 
 .search-input {
@@ -124,6 +128,53 @@ const carouselStyles = `
 .custom-carousel-control:hover .carousel-control-prev-icon,
 .custom-carousel-control:hover .carousel-control-next-icon {
   opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .carousel-caption {
+    font-size: 1.5rem;
+    bottom: 15%;
+  }
+
+  .search-input {
+    font-size: 1rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .search-button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .carousel-image {
+    height: 50vh; /* Adjust image height for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-caption {
+    font-size: 1.2rem;
+    bottom: 10%;
+  }
+
+  .search-input {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .search-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .carousel-image {
+    height: 40vh; /* Further adjust image height for mobile screens */
+  }
+
+  .custom-carousel-control {
+    width: 8%;
+  }
 }
 `;
 
