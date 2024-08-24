@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Modal from '../Modal';
 import Badge from 'react-bootstrap/Badge';
@@ -6,18 +6,12 @@ import Cart from '../screens/Cart';
 import { useCart } from './ContextReducer';
 
 export default function Navbar() {
-  const [cartView, setCartView] = useState(false);
-  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   const navigate = useNavigate();
   let data = useCart();
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     navigate("/");
-  };
-
-  const toggleNavbar = () => {
-    setIsNavCollapsed(!isNavCollapsed);
   };
 
   return (
@@ -31,13 +25,12 @@ export default function Navbar() {
             data-bs-toggle="collapse" 
             data-bs-target="#navbarNav" 
             aria-controls="navbarNav" 
-            aria-expanded={!isNavCollapsed} 
+            aria-expanded="false" 
             aria-label="Toggle navigation"
-            onClick={toggleNavbar}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className={`collapse navbar-collapse ${!isNavCollapsed ? 'show' : ''}`} id="navbarNav">
+          <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto mb-2">
               <li className="nav-item">
                 <Link className="nav-link active fs-5" aria-current="page" to="/">Home</Link>
