@@ -22,7 +22,7 @@ export default function Carousel() {
                 onChange={(e) => setSearch(e.target.value)}
               />
               <button
-                className="btn search-button"
+                className="btn search-button bg success"
                 type="submit"
               >
                 Search
