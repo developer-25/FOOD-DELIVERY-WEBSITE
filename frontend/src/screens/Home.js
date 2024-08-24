@@ -156,7 +156,7 @@ export default function Home() {
               .map((filterItems) => (
                 <div
                   key={filterItems._id}
-                  className="col-12 col-sm-6 col-md-6 col-lg-4 mb-4"
+                  className="col-12 col-sm-12 col-md-6 col-lg-4 mb-4"
                 >
                   <Card
                     foodItem={filterItems}
