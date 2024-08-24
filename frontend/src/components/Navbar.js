@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Modal from '../Modal';
 import Badge from 'react-bootstrap/Badge';
@@ -6,6 +6,7 @@ import Cart from '../screens/Cart';
 import { useCart } from './ContextReducer';
 
 export default function Navbar() {
+  const [cartView, setCartView] = useState(false);
   const navigate = useNavigate();
   let data = useCart();
 
@@ -95,4 +96,8 @@ const navbarButtonStyles = `
 }
 `;
 
-document.head.insertAdjacentHTML('beforeend', `<style>${navbarButtonStyles}</style>`);
+// Inject styles into the document head
+const styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = navbarButtonStyles;
+document.head.appendChild(styleSheet);
