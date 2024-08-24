@@ -32,7 +32,7 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav me-auto mb-2">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link className="nav-link active fs-5" aria-current="page" to="/">Home</Link>
               </li>
@@ -94,10 +94,50 @@ const navbarButtonStyles = `
   border-radius: 50%;
   font-size: 0.75rem;
 }
-`;
 
-// Inject styles into the document head
-const styleSheet = document.createElement("style");
-styleSheet.type = "text/css";
-styleSheet.innerText = navbarButtonStyles;
-document.head.appendChild(styleSheet);
+.navbar-nav .nav-link {
+  margin-right: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .navbar-brand {
+    font-size: 1.5rem; /* Smaller brand font size */
+  }
+  
+  .nav-link {
+    font-size: 1.25rem; /* Adjust link size */
+  }
+
+  .btn-custom {
+    padding: 0.4rem 0.8rem; /* Adjust padding for smaller screens */
+    font-size: 0.9rem; /* Slightly smaller font size */
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.25rem; /* Even smaller brand font size */
+  }
+  
+  .nav-link {
+    font-size: 1rem; /* Adjust link size */
+  }
+
+  .btn-custom {
+    padding: 0.3rem 0.7rem; /* Adjust padding for smaller screens */
+    font-size: 0.85rem; /* Slightly smaller font size */
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand {
+    font-size: 1rem; /* Smallest brand font size */
+  }
+  
+  .nav-link {
+    font-size: 0.9rem; /* Smallest link size */
+  }
+
+  .btn-custom {
+    padding: 0.
