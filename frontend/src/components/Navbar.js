@@ -16,7 +16,17 @@ export default function Navbar() {
     navigate("/");
   };
 
-  const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
+  const handleNavCollapse = () => {
+    setIsNavCollapsed(!isNavCollapsed);
+    const navbarToggle = document.getElementById('navbarNav');
+    if (!isNavCollapsed) {
+      // Close the navbar
+      navbarToggle.classList.remove('show');
+    } else {
+      // Open the navbar
+      navbarToggle.classList.add('show');
+    }
+  };
 
   return (
     <div>
@@ -35,7 +45,7 @@ export default function Navbar() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`} id="navbarNav">
+          <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav me-auto mb-2">
               <li className="nav-item">
                 <Link className="nav-link active fs-5" aria-current="page" to="/">Home</Link>
