@@ -114,7 +114,7 @@ const carouselStyles = `
 }
 
 .search-bar {
-  max-width: 800px;
+  max-width: 900px;
   width: 100%;
   margin-top: 1rem;
 }
