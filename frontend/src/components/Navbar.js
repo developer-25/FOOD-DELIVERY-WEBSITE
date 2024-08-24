@@ -16,16 +16,8 @@ export default function Navbar() {
     navigate("/");
   };
 
-  const handleNavCollapse = () => {
+  const toggleNavbar = () => {
     setIsNavCollapsed(!isNavCollapsed);
-    const navbarToggle = document.getElementById('navbarNav');
-    if (!isNavCollapsed) {
-      // Close the navbar
-      navbarToggle.classList.remove('show');
-    } else {
-      // Open the navbar
-      navbarToggle.classList.add('show');
-    }
   };
 
   return (
@@ -41,11 +33,11 @@ export default function Navbar() {
             aria-controls="navbarNav" 
             aria-expanded={!isNavCollapsed} 
             aria-label="Toggle navigation"
-            onClick={handleNavCollapse}
+            onClick={toggleNavbar}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
+          <div className={`collapse navbar-collapse ${!isNavCollapsed ? 'show' : ''}`} id="navbarNav">
             <ul className="navbar-nav me-auto mb-2">
               <li className="nav-item">
                 <Link className="nav-link active fs-5" aria-current="page" to="/">Home</Link>
