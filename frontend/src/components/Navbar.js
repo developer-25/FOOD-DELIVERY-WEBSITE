@@ -29,7 +29,7 @@ export default function Navbar() {
             data-bs-toggle="collapse" 
             data-bs-target="#navbarNav" 
             aria-controls="navbarNav" 
-            aria-expanded={!isNavCollapsed ? true : false} 
+            aria-expanded={!isNavCollapsed} 
             aria-label="Toggle navigation"
             onClick={handleNavCollapse}
           >
