@@ -22,7 +22,7 @@ export default function Carousel() {
                 onChange={(e) => setSearch(e.target.value)}
               />
               <button
-                className="btn search-button bg success"
+                className="btn search-button"
                 type="submit"
               >
                 Search
@@ -121,15 +121,17 @@ const carouselStyles = `
 
 .search-input {
   flex: 1;
-  padding: 0.8rem; /* Adjusted padding */
-  border-radius: 3; /* Unrounded corners */
+  padding: 0.6rem; /* Decreased height */
+  border-radius: 3px; /* Unrounded corners */
   border: 1px solid #ced4da;
-  font-size: 2rem; /* Adjusted font size */
+  font-size: 1.2rem; /* Adjusted font size */
 }
 
 .search-button {
-  padding: 0.8rem 1.5rem; /* Increased size */
-  border-radius: 3; /* Unrounded corners */
+  padding: 0.6rem 1.5rem; /* Increased size */
+  background-color: #28a745; /* Green background */
+  color: white;
+  border-radius: 3px; /* Unrounded corners */
   font-size: 1.2rem; /* Increased font size */
   border: 1px solid #28a745;
   margin-left: 0.5rem; /* Spacing between input and button */
@@ -159,13 +161,13 @@ const carouselStyles = `
   }
 
   .search-input {
-    font-size: 0.9rem;
-    padding: 0.7rem;
+    font-size: 1rem;
+    padding: 0.5rem; /* Adjusted height */
   }
 
   .search-button {
     font-size: 1rem;
-    padding: 0.7rem 1.3rem;
+    padding: 0.5rem 1.3rem; /* Adjusted size */
   }
 }
 
@@ -176,13 +178,13 @@ const carouselStyles = `
   }
 
   .search-input {
-    font-size: 0.8rem;
-    padding: 0.6rem;
+    font-size: 0.9rem;
+    padding: 0.4rem; /* Adjusted height */
   }
 
   .search-button {
     font-size: 0.9rem;
-    padding: 0.6rem 1.2rem;
+    padding: 0.4rem 1.2rem; /* Adjusted size */
   }
 }
 `;
