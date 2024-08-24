@@ -3,12 +3,6 @@ import React, { useState } from 'react';
 export default function Carousel() {
   const [search, setSearch] = useState('');
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    // Add your search functionality here
-    console.log('Searching for:', search);
-  };
-
   return (
     <div>
       <div
@@ -18,7 +12,7 @@ export default function Carousel() {
       >
         <div className="carousel-inner">
           <div className="carousel-caption d-flex justify-content-center align-items-center flex-column">
-            <form className="d-flex search-bar" onSubmit={handleSearch}>
+            <div className="d-flex search-bar">
               <input
                 className="form-control me-2 search-input"
                 type="search"

@@ -33,7 +33,7 @@ export default function Home() {
       </div>
       <div>
         <Carousel/>
-      </div>
+        </div>
       <div className="container">
         {foodCat !== []
           ? foodCat.map((data) => {
@@ -52,6 +52,7 @@ export default function Home() {
                             key={filterItems._id}
                             className="col-16 col-md-8 col-lg-4"
                           >
+                            
                             <Card foodItem={filterItems}
                               
                               options={filterItems.options[0]}
