@@ -18,26 +18,15 @@ export default function Navbar() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-success">
-        <div className="container-fluid">
+        <div className="container-fluid d-flex flex-wrap justify-content-between align-items-center">
           <Link className="navbar-brand fs-1 fst-italic" to="/">GoFood</Link>
-          <button 
-            className="navbar-toggler" 
-            type="button" 
-            data-bs-toggle="collapse" 
-            data-bs-target="#navbarNav" 
-            aria-controls="navbarNav" 
-            aria-expanded="false" 
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+          <div className="d-flex flex-wrap justify-content-between align-items-center">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row">
+              <li className="nav-item mx-2">
                 <Link className="nav-link active fs-5" aria-current="page" to="/">Home</Link>
               </li>
               {localStorage.getItem("authToken") && (
-                <li className="nav-item">
+                <li className="nav-item mx-2">
                   <Link className="nav-link fs-5" to="/MyOrder">My Orders</Link>
                 </li>
               )}
@@ -99,7 +88,10 @@ const navbarButtonStyles = `
   margin-right: 1rem;
 }
 
-/* Responsive adjustments */
+.container-fluid {
+  flex-wrap: wrap;
+}
+
 @media (max-width: 992px) {
   .navbar-brand {
     font-size: 1.5rem; /* Smaller brand font size */
