@@ -90,10 +90,12 @@ function Card(props) {
 export default Card;
 
 // Embedded CSS
-
 const cardStyles = `
 .card-container {
     margin: 1rem;
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to wrap to new lines */
+    justify-content: center; /* Center align the cards */
 }
 
 .card {
@@ -105,6 +107,7 @@ const cardStyles = `
     transition: transform 0.2s, box-shadow 0.2s;
     background-color: #fff;
     cursor: pointer;
+    margin: 0.5rem; /* Adds spacing between cards */
 }
 
 .card:hover {
@@ -172,6 +175,35 @@ const cardStyles = `
 hr {
     margin: 1rem 0;
     border-color: #f1f1f1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .card {
+        width: 15rem; /* Smaller cards for medium screens */
+    }
+}
+
+@media (max-width: 992px) {
+    .card {
+        width: 13rem; /* Even smaller cards for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%; /* Full width cards on very small screens */
+    }
+
+    .card-options {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-select {
+        width: 100%;
+        margin-bottom: 0.5rem; /* Add spacing between selects */
+    }
 }
 `;
 
